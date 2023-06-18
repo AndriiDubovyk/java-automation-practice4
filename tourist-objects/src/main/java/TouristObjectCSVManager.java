@@ -39,11 +39,14 @@ class TouristObjectCSVManager {
                 String cuisine = "null";
                 String hasOutdoorSeating = "null";
                 if (obj instanceof Museum museum) {
+                    type = "Museum";
                     ticketPrice = String.valueOf(museum.getTicketPrice());
                 } else if (obj instanceof Park park) {
+                    type = "Park";
                     area = String.valueOf(park.getArea());
                     hasLake = String.valueOf(park.isHasLake());
                 } else if (obj instanceof Restaurant restaurant) {
+                    type = "Restaurant";
                     cuisine = restaurant.getCuisine();
                     hasOutdoorSeating = String.valueOf(restaurant.isHasOutdoorSeating());
                 }
@@ -80,8 +83,10 @@ class TouristObjectCSVManager {
                 String type = nextLine[4];
                 TouristObject obj = switch (type) {
                     case "Museum" -> new Museum(name, country, location, description, Double.parseDouble(nextLine[5]));
-                    case "Park" -> new Park(name, country, location, description, Integer.parseInt(nextLine[6]), Boolean.parseBoolean(nextLine[7]));
-                    case "Restaurant" -> new Restaurant(name, country, location, description, nextLine[8], Boolean.parseBoolean(nextLine[9]));
+                    case "Park" ->
+                            new Park(name, country, location, description, Integer.parseInt(nextLine[6]), Boolean.parseBoolean(nextLine[7]));
+                    case "Restaurant" ->
+                            new Restaurant(name, country, location, description, nextLine[8], Boolean.parseBoolean(nextLine[9]));
                     default -> new TouristObject(name, country, location, description);
                 };
                 String reviewsFilePath = name + "_reviews.csv";
