@@ -5,7 +5,6 @@ import java.io.File;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 public class TouristObjectTest {
 
@@ -54,7 +53,7 @@ public class TouristObjectTest {
         assertEquals(museum.getCountry(), museumFromCsv.getCountry());
         assertEquals(museum.getLocation(), museumFromCsv.getLocation());
         assertEquals(museum.getDescription(), museumFromCsv.getDescription());
-        assertNotEquals(museum.getTicketPrice(), museumFromCsv.getTicketPrice()); // TODO: test
+        assertEquals(museum.getTicketPrice(), museumFromCsv.getTicketPrice());
     }
 
     @Test

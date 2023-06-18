@@ -21,7 +21,7 @@ public class Museum extends TouristObject {
     @Override
     public String toString() {
         return name + ". " +
-                country+ ", " + location +
+                country + ", " + location +
                 ". Ticket price($): " + ticketPrice + ". " +
                 description;
     }

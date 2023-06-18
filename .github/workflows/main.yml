@@ -18,6 +18,9 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
+      - name: Run Checkstyle analysis
+        run: ./gradlew checkstyleMain
+
       - name: Run unit tests
         run: ./gradlew test
 
