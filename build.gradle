@@ -1,0 +1,52 @@
+plugins {
+    id 'java'
+}
+
+group = 'com.andriidubovyk.touristassistant'
+version = '1.0-SNAPSHOT'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation platform('org.junit:junit-bom:5.9.1')
+    testImplementation 'org.junit.jupiter:junit-jupiter'
+}
+
+test {
+    useJUnitPlatform()
+}
+
+tasks.register("checkFileExists") {
+    doLast {
+        if (file("objects.csv").exists()) {
+            println "Objects CSV file exists."
+        } else {
+            println "Objects CSV file does not exist."
+        }
+    }
+}
+
+tasks.register("generateStartData") {
+    doLast {
+        // Tourist objects
+        def objectsFile = file("objects.csv")
+        objectsFile.write("\"Name\",\"Country\",\"Location\",\"Description\",\"Type\",\"Ticket Price\",\"Area\",\"Has Lake\",\"Cuisine\",\"Has Outdoor Seating\"\n" +
+                "\"Great Barrier Reef\",\"Australia\",\"Queensland\",\"A world-renowned natural wonder.\",\"Default\",\"null\",\"null\",\"null\",\"null\",\"null\"\n" +
+                "\"Machu Picchu\",\"Peru\",\"Queensland\",\"A world-renowned natural wonder.\",\"Default\",\"null\",\"null\",\"null\",\"null\",\"null\"\n" +
+                "\"Central Park\",\"USA\",\"New York\",\"An iconic urban park\",\"Default\",\"null\",\"null\",\"null\",\"null\",\"null\"")
+        // Routes
+        def routesFile = file("routes.csv")
+        routesFile.write("\"Name\",\"Path\"\n" +
+                "\"Interestin Journey\",\"Great Barrier Reef - Machu Picchu\"\n")
+        // Reviews
+        def greatBarrierReefReviews = file("Great Barrier Reef_reviews.csv")
+        greatBarrierReefReviews.write("\"Author\",\"Content\",\"Rating\"")
+        def machuPicchuReviews = file("Machu Picchu_reviews.csv")
+        machuPicchuReviews.write("\"Author\",\"Content\",\"Rating\"")
+        def centralParkReviews = file("Central Park_reviews.csv")
+        centralParkReviews.write("\"Author\",\"Content\",\"Rating\"")
+        println "Start files have been created."
+    }
+}
