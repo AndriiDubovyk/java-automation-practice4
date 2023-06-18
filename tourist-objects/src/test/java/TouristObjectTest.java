@@ -38,7 +38,7 @@ public class TouristObjectTest {
         Museum museum = new Museum(
                 "Museum name",
                 "Some country",
-                "Unknown location",
+                "Unknown museum location",
                 "Museum description",
                 55.5
         );
