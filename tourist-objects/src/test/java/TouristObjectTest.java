@@ -21,6 +21,8 @@ public class TouristObjectTest {
         );
         TouristObject.writeToCSV(List.of(to), filename);
 
+
+
         // Read from csv
         List<TouristObject> fromCsv = TouristObject.fromCSV(filename);
         TouristObject toFromCsv = fromCsv.get(0);
@@ -47,7 +49,6 @@ public class TouristObjectTest {
         // Read from csv
         List<TouristObject> fromCsv = TouristObject.fromCSV(filename);
         Museum museumFromCsv = (Museum) fromCsv.get(0);
-
         // Compare result with original object
         assertEquals(museum.getName(), museumFromCsv.getName());
         assertEquals(museum.getCountry(), museumFromCsv.getCountry());
